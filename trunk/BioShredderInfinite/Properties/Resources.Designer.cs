@@ -61,6 +61,24 @@ namespace BioShredderInfinite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to Attach....
+        /// </summary>
+        public static string strBtAttach {
+            get {
+                return ResourceManager.GetString("strBtAttach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Detach!.
+        /// </summary>
+        public static string strBtDetach {
+            get {
+                return ResourceManager.GetString("strBtDetach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to your weapons always have ammo, and you never need to reload them..
         /// </summary>
         public static string strChkCheatDescriptionAmmoHack {
@@ -205,6 +223,15 @@ namespace BioShredderInfinite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to PID:.
+        /// </summary>
+        public static string strLblProcessIDPrompt {
+            get {
+                return ResourceManager.GetString("strLblProcessIDPrompt", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to Please, consider supporting the developer!.
         /// </summary>
         public static string strLblRequestForDonation {
@@ -228,6 +255,51 @@ namespace BioShredderInfinite.Properties {
         public static string strLblRequiredGameVersionValue {
             get {
                 return ResourceManager.GetString("strLblRequiredGameVersionValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to attach to the game&apos;s process!.
+        /// </summary>
+        public static string strMsgFailedToAttach {
+            get {
+                return ResourceManager.GetString("strMsgFailedToAttach", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Failed to attach.
+        /// </summary>
+        public static string strMsgFailedToAttachCaption {
+            get {
+                return ResourceManager.GetString("strMsgFailedToAttachCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game&apos;s process is not running or the trainer hasn&apos;t been able to detect it!.
+        /// </summary>
+        public static string strMsgGamesProcessNotFound {
+            get {
+                return ResourceManager.GetString("strMsgGamesProcessNotFound", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to Game not found!.
+        /// </summary>
+        public static string strMsgGamesProcessNotFoundCaption {
+            get {
+                return ResourceManager.GetString("strMsgGamesProcessNotFoundCaption", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to &lt;NONE&gt;.
+        /// </summary>
+        public static string strNoneTag {
+            get {
+                return ResourceManager.GetString("strNoneTag", resourceCulture);
             }
         }
     }

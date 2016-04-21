@@ -117,6 +117,12 @@
   <resheader name="writer">
     <value>System.Resources.ResXResourceWriter, System.Windows.Forms, Version=4.0.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089</value>
   </resheader>
+  <data name="strBtAttach" xml:space="preserve">
+    <value>Attach...</value>
+  </data>
+  <data name="strBtDetach" xml:space="preserve">
+    <value>Detach!</value>
+  </data>
   <data name="strChkCheatDescriptionAmmoHack" xml:space="preserve">
     <value>your weapons always have ammo, and you never need to reload them.</value>
   </data>
@@ -165,6 +171,9 @@
   <data name="strLblNotAttached" xml:space="preserve">
     <value>Not attached...</value>
   </data>
+  <data name="strLblProcessIDPrompt" xml:space="preserve">
+    <value>PID:</value>
+  </data>
   <data name="strLblRequestForDonation" xml:space="preserve">
     <value>Please, consider supporting the developer!</value>
   </data>
@@ -173,5 +182,20 @@
   </data>
   <data name="strLblRequiredGameVersionValue" xml:space="preserve">
     <value>1.0.1643565</value>
+  </data>
+  <data name="strMsgFailedToAttach" xml:space="preserve">
+    <value>Failed to attach to the game's process!</value>
+  </data>
+  <data name="strMsgFailedToAttachCaption" xml:space="preserve">
+    <value>Failed to attach</value>
+  </data>
+  <data name="strMsgGamesProcessNotFound" xml:space="preserve">
+    <value>Game's process is not running or the trainer hasn't been able to detect it!</value>
+  </data>
+  <data name="strMsgGamesProcessNotFoundCaption" xml:space="preserve">
+    <value>Game not found!</value>
+  </data>
+  <data name="strNoneTag" xml:space="preserve">
+    <value>&lt;NONE&gt;</value>
   </data>
 </root>

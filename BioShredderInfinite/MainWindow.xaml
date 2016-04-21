@@ -24,7 +24,27 @@
         xmlns:local="clr-namespace:BioShredderInfinite"
 		xmlns:props="clr-namespace:BioShredderInfinite.Properties"
         mc:Ignorable="d"
-        Title="BioShredder Infinite - by Vinicius.RAS" Height="381.373" Width="700.49">
+		DataContext="{Binding RelativeSource={RelativeSource Self}}"
+        Title="BioShredder Infinite - by Vinicius.RAS" Height="381.373" Width="700.49" Closing="WindowClosing">
+	<Window.Resources>
+		<!-- This style makes things visible only when the trainer is attached to the game. -->
+		<Style x:Key="styleVisibleWhenAttached" TargetType="FrameworkElement">
+			<Setter Property="Visibility" Value="Hidden" />
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Path=GameMemoryIO.Attached}" Value="True">
+					<Setter Property="Visibility" Value="Visible" />
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+		<!-- This style disables cheats' checkboxes once the trainer gets detached from the game. -->
+		<Style x:Key="styleUncheckOnDetachment" TargetType="CheckBox">
+			<Style.Triggers>
+				<DataTrigger Binding="{Binding Path=GameMemoryIO.Attached}" Value="False">
+					<Setter Property="IsChecked" Value="False" />
+				</DataTrigger>
+			</Style.Triggers>
+		</Style>
+	</Window.Resources>
     <StackPanel Orientation="Vertical" Margin="3">
 		<GroupBox Header="{x:Static props:Resources.strGroupBoxHeaderGameInfo}" Margin="3">
 			<Grid>
@@ -40,16 +60,55 @@
 				</Grid.ColumnDefinitions>
 
 				<Label Grid.Row="0" Grid.Column="0" Content="{x:Static props:Resources.strLblGamesProcessPrompt}" FontWeight="Bold" HorizontalAlignment="Right" Margin="3" />
-				<Label Grid.Row="0" Grid.Column="1" Content="{x:Static props:Resources.strLblNotAttached}" MinWidth="170" HorizontalAlignment="Left" Margin="3" />
+				<DockPanel Grid.Row="0" Grid.Column="1" LastChildFill="False" VerticalAlignment="Center" MinWidth="170" Margin="3">
+					<Label DockPanel.Dock="Left" Margin="0" Padding="0">
+						<Label.Style>
+							<Style TargetType="Label">
+								<Setter Property="Content" Value="{x:Static props:Resources.strLblNotAttached}" />
+								<Style.Triggers>
+									<DataTrigger Binding="{Binding Path=GameMemoryIO.Attached}" Value="True">
+										<Setter Property="Content" Value="{Binding Path=GameMemoryIO.TargetProcess.MainModule.ModuleName}" />
+									</DataTrigger>
+								</Style.Triggers>
+							</Style>
+						</Label.Style>
+					</Label>
+					<Label DockPanel.Dock="Left" Style="{StaticResource styleVisibleWhenAttached}" Content="(" Margin="0" Padding="3,0,0,0" />
+					<Label DockPanel.Dock="Left" Style="{StaticResource styleVisibleWhenAttached}" Content="{x:Static props:Resources.strLblProcessIDPrompt}" Margin="0" Padding="0" />
+					<Label DockPanel.Dock="Left" Style="{StaticResource styleVisibleWhenAttached}" Content="{Binding Path=GameMemoryIO.TargetProcess.Id,FallbackValue={x:Static props:Resources.strNoneTag}}" Margin="0" Padding="3,0,0,0" />
+					<Label DockPanel.Dock="Left" Style="{StaticResource styleVisibleWhenAttached}" Content=")" Margin="0" Padding="0" />
+				</DockPanel>
+				
 
 				<Label Grid.Row="1" Grid.Column="0" Content="{x:Static props:Resources.strLblRequiredGameVersionPrompt}" FontWeight="Bold" HorizontalAlignment="Right" Margin="3" />
 				<Label Grid.Row="1" Grid.Column="1" Content="{x:Static props:Resources.strLblRequiredGameVersionValue}" HorizontalAlignment="Left" Margin="3" />
 
-				<Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Content="Attach..." Margin="3" />
+				<Button Grid.Row="0" Grid.Column="2" Grid.RowSpan="2" Margin="3" Click="ButtonClickAttachToGame">
+					<Button.Style>
+						<Style TargetType="Button">
+							<Setter Property="Content" Value="{x:Static props:Resources.strBtAttach}" />
+							<Style.Triggers>
+								<DataTrigger Binding="{Binding Path=GameMemoryIO.Attached}" Value="True">
+									<Setter Property="Content" Value="{x:Static props:Resources.strBtDetach}" />
+								</DataTrigger>
+							</Style.Triggers>
+						</Style>
+					</Button.Style>
+				</Button>
 			</Grid>
 		</GroupBox>
 		<GroupBox Header="{x:Static props:Resources.strGroupBoxHeaderCheats}" Margin="3" Padding="3" FontWeight="Bold">
 			<StackPanel Orientation="Vertical">
+				<StackPanel.Style>
+					<Style TargetType="StackPanel">
+						<Setter Property="IsEnabled" Value="False" />
+						<Style.Triggers>
+							<DataTrigger Binding="{Binding Path=GameMemoryIO.Attached}" Value="True">
+								<Setter Property="IsEnabled" Value="True" />
+							</DataTrigger>
+						</Style.Triggers>
+					</Style>
+				</StackPanel.Style>
 				<StackPanel.Resources>
 					<Style TargetType="Label">
 						<Setter Property="FontWeight" Value="Normal" />
@@ -59,7 +118,7 @@
 						<Setter Property="Padding" Value="3,0,0,0" />
 						<Setter Property="Margin" Value="0" />
 					</Style>
-					<Style TargetType="CheckBox">
+					<Style TargetType="CheckBox" BasedOn="{StaticResource styleUncheckOnDetachment}">
 						<Setter Property="FontWeight" Value="{x:Static FontWeights.Bold}" />
 						<Setter Property="VerticalAlignment" Value="Center" />
 						<Setter Property="VerticalContentAlignment" Value="Center" />
@@ -68,23 +127,23 @@
 					</Style>
 				</StackPanel.Resources>
 				<StackPanel Orientation="Horizontal">
-					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptHPHack}" />
+					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptHPHack}" Tag="{x:Static local:ECheat.evCheatHPHack}" />
 					<Label Content="{x:Static props:Resources.strChkCheatDescriptionHPHack}" Margin="3" />
 				</StackPanel>
 				<StackPanel Orientation="Horizontal">
-					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptMoneyHack}" />
+					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptMoneyHack}" Tag="{x:Static local:ECheat.evCheatMoneyHack}" />
 					<Label Content="{x:Static props:Resources.strChkCheatDescriptionMoneyHack}" Margin="3" />
 				</StackPanel>
 				<StackPanel Orientation="Horizontal">
-					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptSaltsHack}" />
+					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptSaltsHack}" Tag="{x:Static local:ECheat.evCheatSaltsHack}" />
 					<Label Content="{x:Static props:Resources.strChkCheatDescriptionSaltsHack}" Margin="3" />
 				</StackPanel>
 				<StackPanel Orientation="Horizontal">
-					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptLockpicksHack}" />
+					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptLockpicksHack}" Tag="{x:Static local:ECheat.evCheatLockpickHack}" />
 					<Label Content="{x:Static props:Resources.strChkCheatDescriptionLockpicksHack}" Margin="3" />
 				</StackPanel>
 				<StackPanel Orientation="Horizontal">
-					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptAmmoHack}" />
+					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptAmmoHack}" Tag="{x:Static local:ECheat.evCheatAmmoHack}" />
 					<Label Content="{x:Static props:Resources.strChkCheatDescriptionAmmoHack}" Margin="3" />
 				</StackPanel>
 			</StackPanel>

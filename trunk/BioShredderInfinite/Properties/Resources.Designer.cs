@@ -115,6 +115,15 @@ namespace BioShredderInfinite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to a single hit will kill any enemy instantly..
+        /// </summary>
+        public static string strChkCheatDescriptionOneHitKill {
+            get {
+                return ResourceManager.GetString("strChkCheatDescriptionOneHitKill", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to salts never decrease (if salts are low, just try to use them TWICE to refill)..
         /// </summary>
         public static string strChkCheatDescriptionSaltsHack {
@@ -156,6 +165,15 @@ namespace BioShredderInfinite.Properties {
         public static string strChkCheatPromptMoneyHack {
             get {
                 return ResourceManager.GetString("strChkCheatPromptMoneyHack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to One Hit Kill:.
+        /// </summary>
+        public static string strChkCheatPromptOneHitKill {
+            get {
+                return ResourceManager.GetString("strChkCheatPromptOneHitKill", resourceCulture);
             }
         }
         

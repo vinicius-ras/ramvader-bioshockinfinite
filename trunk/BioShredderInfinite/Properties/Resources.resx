@@ -135,6 +135,9 @@
   <data name="strChkCheatDescriptionMoneyHack" xml:space="preserve">
     <value>be rich whenever you use a Vending Machine.</value>
   </data>
+  <data name="strChkCheatDescriptionOneHitKill" xml:space="preserve">
+    <value>a single hit will kill any enemy instantly.</value>
+  </data>
   <data name="strChkCheatDescriptionSaltsHack" xml:space="preserve">
     <value>salts never decrease (if salts are low, just try to use them TWICE to refill).</value>
   </data>
@@ -149,6 +152,9 @@
   </data>
   <data name="strChkCheatPromptMoneyHack" xml:space="preserve">
     <value>MONEY hack:</value>
+  </data>
+  <data name="strChkCheatPromptOneHitKill" xml:space="preserve">
+    <value>One Hit Kill:</value>
   </data>
   <data name="strChkCheatPromptSaltsHack" xml:space="preserve">
     <value>SALTS hack:</value>

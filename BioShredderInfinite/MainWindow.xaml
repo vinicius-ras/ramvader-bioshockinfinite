@@ -146,6 +146,10 @@
 					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptAmmoHack}" Tag="{x:Static local:ECheat.evCheatAmmoHack}" />
 					<Label Content="{x:Static props:Resources.strChkCheatDescriptionAmmoHack}" Margin="3" />
 				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptOneHitKill}" Tag="{x:Static local:ECheat.evCheatOneHitKill}" />
+					<Label Content="{x:Static props:Resources.strChkCheatDescriptionOneHitKill}" Margin="3" />
+				</StackPanel>
 			</StackPanel>
 			
 		</GroupBox>

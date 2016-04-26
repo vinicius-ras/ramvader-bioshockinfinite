@@ -25,6 +25,17 @@ namespace BioShredderInfinite
 
 
 
+		#region PRIVATE FIELDS
+		/** The memory alteration used to inject the code cave that will keep track of the address of the player's HP variable.
+		 * This memory alteration will be manually activated once the trainer injects its code into the game's memory space, and
+		 * will be manually deactivated once the trainer detaches from the game. */
+		private MemoryAlterationX86Call m_memAlterationHPAddressTracker;
+		#endregion
+
+
+
+
+
 		#region PUBLIC PROPERTIES
 		/// <summary>An object used for performing I/O operations on the game process' memory. </summary>
 		public RAMvaderTarget GameMemoryIO { get; private set; }
@@ -49,6 +60,8 @@ namespace BioShredderInfinite
 				{
 					foreach ( ECheat curCheat in Enum.GetValues( typeof( ECheat ) ) )
 						GameMemoryInjector.SetMemoryAlterationsActive( curCheat, false );
+
+					m_memAlterationHPAddressTracker.SetEnabled( GameMemoryInjector, false );
 				}
 
 				// Release injected memory, cleanup and detach
@@ -164,10 +177,14 @@ namespace BioShredderInfinite
 							this.Dispatcher.Invoke( () => { this.DetachFromGame(); } );
 						};
 
-						// Build the cheat activation steps...
+						// When trainer's code is injected into the game's memory space, always activate (manually) the code cave that keeps track of the player's HP variable's address
 						IntPtr mainModuleAddress = GameMemoryIO.TargetProcess.MainModule.BaseAddress;
 
-						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatHPHack, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x5EDE47, ECodeCave.evCodeCaveHPHack, 8 ) );
+						m_memAlterationHPAddressTracker = new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x37D9BB, ECodeCave.evCodeCaveHPAddressTracker, 8 );
+						m_memAlterationHPAddressTracker.SetEnabled( GameMemoryInjector, true );
+
+						// Build the cheat activation steps...
+						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatHPHack, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x37DABF, ECodeCave.evCodeCaveHPHack, 7 ) );
 
 						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatMoneyHack, new MemoryAlterationNOP( GameMemoryIO, mainModuleAddress + 0x4BED25, 3 ) );
 						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatMoneyHack, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x4B074, ECodeCave.evCodeCaveMoneyHack, 5 ) );
@@ -179,6 +196,9 @@ namespace BioShredderInfinite
 						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatLockpickHack, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x212C8B, ECodeCave.evCodeCaveLockpicksHack, 5 ) );
 
 						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatAmmoHack, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x887920, ECodeCave.evCodeCaveAmmoHack, 6 ) );
+
+						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatOneHitKill, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x9A690, ECodeCave.evCodeCaveOneHitKill1, 6 ) );
+						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatOneHitKill, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x3D2B10, ECodeCave.evCodeCaveOneHitKill2, 6 ) );
 					}
 					else
 						MessageBox.Show( this,

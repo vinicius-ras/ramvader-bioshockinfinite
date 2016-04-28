@@ -26,9 +26,9 @@ using System.Windows;
 // set of attributes. Change these attribute values to modify the information
 // associated with an assembly.
 [assembly: AssemblyTitle( "BioShredderInfinite" )]
-[assembly: AssemblyDescription( "" )]
+[assembly: AssemblyDescription( "BioShredderInfinite is a trainer for the game Bioshock Infinite." )]
 [assembly: AssemblyConfiguration( "" )]
-[assembly: AssemblyCompany( "" )]
+[assembly: AssemblyCompany( "Vinicius.RAS" )]
 [assembly: AssemblyProduct( "BioShredderInfinite" )]
 [assembly: AssemblyCopyright( "Copyright ©  2016" )]
 [assembly: AssemblyTrademark( "" )]

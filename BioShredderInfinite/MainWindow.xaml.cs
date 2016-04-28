@@ -190,7 +190,7 @@ namespace BioShredderInfinite
 						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatMoneyHack, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x4B074, ECodeCave.evCodeCaveMoneyHack, 5 ) );
 
 						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatSaltsHack, new MemoryAlterationNOP( GameMemoryIO, mainModuleAddress + 0x88079E, 3 ) );
-						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatSaltsHack, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0xF6DEA, ECodeCave.evCodeCaveSaltsHack, 9 ) );
+						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatSaltsHack, new MemoryAlterationX86FarJump( GameMemoryIO, mainModuleAddress + 0x6A0048, ECodeCave.evCodeCaveSaltsHack, EJumpInstructionType.evJMP, 6 ) );
 
 						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatLockpickHack, new MemoryAlterationNOP( GameMemoryIO, mainModuleAddress + 0x67B094, 3 ) );
 						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatLockpickHack, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x212C8B, ECodeCave.evCodeCaveLockpicksHack, 5 ) );

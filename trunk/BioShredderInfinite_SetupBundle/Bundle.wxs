@@ -23,7 +23,7 @@
 	  -  1-Checks if the user has the .NET Framework 4.5 installed in his/her machine. If the framework is not installed, the setup is capable
 	  -    of downloading and installing it for the user.
 	  -  2-Installs BioShredderInfinite into the user's machine. -->
-	<Bundle Name="BioShredderInfinite Trainer" Version="1.0.0" Manufacturer="Vinicius.RAS" UpgradeCode="6E89A80B-446B-40DA-AD96-8692C62A90EC"
+	<Bundle Name="BioShredderInfinite Trainer" Version="1.0.1" Manufacturer="Vinicius.RAS" UpgradeCode="6E89A80B-446B-40DA-AD96-8692C62A90EC"
           IconSourceFile="$(var.BioShredderInfinite.ProjectDir)media\icon.ico"
           DisableModify="yes">
 		<!-- Configure to use Wix Toolset's standard bootstrapper application for installing the chain of packages. -->

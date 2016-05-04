@@ -21,7 +21,7 @@
 	<!-- This file will be generating the MSI file which installs BioShredderInfinite into the user's machine. -->
 	<Product Id="CAA84355-88D7-4822-BBDA-F2F8F3B43ADE" UpgradeCode="DBC76D5C-6641-4817-BF62-414DB7EA5561"
 			 Name="BioShredderInfinite Trainer" Manufacturer="Vinicius.RAS" Language="1033" Codepage="1252"
-			 Version="1.0.0">
+			 Version="1.0.1">
 		<!-- Package, upgrade and downgrade information. -->
 		<Package InstallerVersion="200" Compressed="yes" InstallScope="perMachine"
 				 Keywords="Installer"

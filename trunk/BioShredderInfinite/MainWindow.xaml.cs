@@ -199,6 +199,8 @@ namespace BioShredderInfinite
 
 						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatOneHitKill, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x9A690, ECodeCave.evCodeCaveOneHitKill1, 6 ) );
 						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatOneHitKill, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x3D2B10, ECodeCave.evCodeCaveOneHitKill2, 6 ) );
+
+						GameMemoryInjector.AddMemoryAlteration( ECheat.evCheatSongbirdHack, new MemoryAlterationX86Call( GameMemoryIO, mainModuleAddress + 0x6CEC6D, ECodeCave.evCodeCaveSongBirdHack, 8 ) );
 					}
 					else
 						MessageBox.Show( this,

@@ -25,7 +25,7 @@
 		xmlns:props="clr-namespace:BioShredderInfinite.Properties"
         mc:Ignorable="d"
 		DataContext="{Binding RelativeSource={RelativeSource Self}}"
-        Title="BioShredder Infinite - by Vinicius.RAS" Height="381.373" Width="700.49" Closing="WindowClosing" SizeToContent="Height"
+        Title="{x:Static props:Resources.strMainWindowTitle}" Height="441.373" Width="700.49" Closing="WindowClosing" SizeToContent="Height"
 		Icon="/media/icon.ico">
 	<Window.Resources>
 		<!-- This style makes things visible only when the trainer is attached to the game. -->
@@ -150,6 +150,10 @@
 				<StackPanel Orientation="Horizontal">
 					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptOneHitKill}" Tag="{x:Static local:ECheat.evCheatOneHitKill}" />
 					<Label Content="{x:Static props:Resources.strChkCheatDescriptionOneHitKill}" Margin="3" />
+				</StackPanel>
+				<StackPanel Orientation="Horizontal">
+					<CheckBox Checked="CheckBoxCheatToggled" Unchecked="CheckBoxCheatToggled" Content="{x:Static props:Resources.strChkCheatPromptSongbirdHack}" Tag="{x:Static local:ECheat.evCheatSongbirdHack}" />
+					<Label Content="{x:Static props:Resources.strChkCheatDescriptionSongbirdHack}" Margin="3" />
 				</StackPanel>
 			</StackPanel>
 			

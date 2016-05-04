@@ -133,6 +133,15 @@ namespace BioShredderInfinite.Properties {
         }
         
         /// <summary>
+        ///   Looks up a localized string similar to the songbird is ALWAYS available to perform an attack during the game&apos;s final battle..
+        /// </summary>
+        public static string strChkCheatDescriptionSongbirdHack {
+            get {
+                return ResourceManager.GetString("strChkCheatDescriptionSongbirdHack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
         ///   Looks up a localized string similar to AMMO hack:.
         /// </summary>
         public static string strChkCheatPromptAmmoHack {
@@ -183,6 +192,15 @@ namespace BioShredderInfinite.Properties {
         public static string strChkCheatPromptSaltsHack {
             get {
                 return ResourceManager.GetString("strChkCheatPromptSaltsHack", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to SONGBIRD hack:.
+        /// </summary>
+        public static string strChkCheatPromptSongbirdHack {
+            get {
+                return ResourceManager.GetString("strChkCheatPromptSongbirdHack", resourceCulture);
             }
         }
         
@@ -273,6 +291,15 @@ namespace BioShredderInfinite.Properties {
         public static string strLblRequiredGameVersionValue {
             get {
                 return ResourceManager.GetString("strLblRequiredGameVersionValue", resourceCulture);
+            }
+        }
+        
+        /// <summary>
+        ///   Looks up a localized string similar to BioShredder Infinite - by Vinicius.RAS (version 1.0.1).
+        /// </summary>
+        public static string strMainWindowTitle {
+            get {
+                return ResourceManager.GetString("strMainWindowTitle", resourceCulture);
             }
         }
         

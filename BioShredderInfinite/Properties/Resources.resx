@@ -141,6 +141,9 @@
   <data name="strChkCheatDescriptionSaltsHack" xml:space="preserve">
     <value>salts never decrease (if salts are low, just try to use them TWICE to refill).</value>
   </data>
+  <data name="strChkCheatDescriptionSongbirdHack" xml:space="preserve">
+    <value>the songbird is ALWAYS available to perform an attack during the game's final battle.</value>
+  </data>
   <data name="strChkCheatPromptAmmoHack" xml:space="preserve">
     <value>AMMO hack:</value>
   </data>
@@ -158,6 +161,9 @@
   </data>
   <data name="strChkCheatPromptSaltsHack" xml:space="preserve">
     <value>SALTS hack:</value>
+  </data>
+  <data name="strChkCheatPromptSongbirdHack" xml:space="preserve">
+    <value>SONGBIRD hack:</value>
   </data>
   <data name="strGroupBoxHeaderCheats" xml:space="preserve">
     <value>Cheats</value>
@@ -188,6 +194,9 @@
   </data>
   <data name="strLblRequiredGameVersionValue" xml:space="preserve">
     <value>1.0.1643565</value>
+  </data>
+  <data name="strMainWindowTitle" xml:space="preserve">
+    <value>BioShredder Infinite - by Vinicius.RAS (version 1.0.1)</value>
   </data>
   <data name="strMsgFailedToAttach" xml:space="preserve">
     <value>Failed to attach to the game's process!</value>

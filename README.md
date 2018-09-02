@@ -15,4 +15,4 @@ This trainer has been tested on **Bioshock Infinite v1.0.1643565** from Steam.
 * **Lockpick hack:** enables you to lockpick anything at any time (you don't even need to have lockpicks in your inventory).
 * **Ammo hack:** unlimited ammunition (you also never need to reload your weapons).
 * **One Hit Kill:** kill any enemy with a single hit.
-* **Songbird Hack:** during the game's final battle, Songbird is *always* available to perform attacks.
+* **Songbird Hack:** during the game's final battle, Songbird is *always* available to perform attacks (you are also granted the ability to summon **multiple Songbirds**).
